@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMP Quiz</title>
+    <style>
+        .signature-box {
+            width: 300px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Test de Verificacion de Aprendizaje de las BUENAS PRACTICAS DE MANUFACTURA (GMP) / GBM FOOD-CHAIN SOLUTIONS LLC</h1>
+    <form id="quizForm">
+        <label for="username">Nombre completo:</label>
+        <input type="text" id="username" required><br><br>
+
+        <p>1. Que significan las siglas GMP en ingles?:</p>
+        <input type="radio" name="q1" value="W1">A. Good Maintenance Procedures<br>
+        <input type="radio" name="q1" value="W2">B. Good Manufacturing Procedures<br>
+	<input type="radio" name="q1" value="C">C. Good Manufacturing Practices<br>
+
+        <p>2. Las reglas GMP deben ser acatadas por las siguientes personas:</p>
+        <input type="radio" name="q2" value="W1">A. Empleados.<br>
+        <input type="radio" name="q2" value="W2">B. Visitantes y contratistas.<br>
+        <input type="radio" name="q2" value="C">C. Todos los anteriores.<br>
+
+        <p>3. Los siguientes objetos se permiten en areas de almacenado y areas de empaque:</p>
+        <input type="radio" name="q3" value="W1">A. Shorts y sandalias.<br>
+	<input type="radio" name="q3" value="W2">B. Joyeria fina.<br>
+        <input type="radio" name="q3" value="W3">C. Tu cafe y lonche.<br>
+	<input type="radio" name="q3" value="D">D. Zapatos y chamarras apropiados.<br>
+
+        <p>4. Las manos se deben lavar:</p>
+        <input type="radio" name="q4" value="W1">A. Antes de usar el baño.<br>
+        <input type="radio" name="q4" value="W2">B. Despues de tocar producto.<br>
+	<input type="radio" name="q4" value="C">C. Siempre que se ensucien.<br>
+
+        <p>5. A un empleado con gripa se le permite trabajar en el area de empaque siempre y cuando use un cubrebocas.</p>
+        <input type="radio" name="q5" value="A">A. FALSO<br>
+        <input type="radio" name="q5" value="W">B. VERDADERO<br>
+
+        <p>6. Redecillas para el cabello son requeridas en las siguientes areas de la planta:</p>
+        <input type="radio" name="q6" value="W1">A. Areas de bodega.<br>
+        <input type="radio" name="q6" value="B">B. Area de empaque.<br>
+	<input type="radio" name="q6" value="W2">C. Comedores y baños.<br>
+
+        <p>7. Si un contratista no esta siguiendo las reglas GMP se puede...</p>
+        <input type="radio" name="q7" value="A">A. Que se le pida sque siga las reglas o ser removido de la planta.<br>
+        <input type="radio" name="q7" value="W1">B. Pedirle una reduccion en la factura para que pueda seguir trabajando.<br>
+        <input type="radio" name="q7" value="W2">C. Que el contratgista acepte seguir las reglas en la sigueinte visita.<br>
+
+        <p>8. El procedimiento correcto para lavarse las manos NO incluye::</p>
+        <input type="radio" name="q8" value="W1">A. Refregarse las manos por al menos 20 segundos.<br>
+        <input type="radio" name="q8" value="B">B. Usar un desinfectante o sanitizer si no hay jabon.<br>
+	<input type="radio" name="q8" value="W2">C. Usar jabon y agua tibia.<br>
+
+        <p>9. Los siguientes objetos se permiten cuando trabaja en la bodega o areas de empaque.</p>
+        <input type="radio" name="q9" value="W">A. Uñas pintadas.<br>
+        <input type="radio" name="q9" value="W">B. Pestañas postizas.<br>
+	<input type="radio" name="q9" value="C">C. Brazalete de alerta medica.<br>
+
+        <p>10. Los siguientes objectos de vidrio se permiten con limitaciones en las areas de empaque y bodega:</p>
+        <input type="radio" name="q10" value="W">A. Termometros.<br>
+        <input type="radio" name="q10" value="W">B. Floreros.<br>
+	<input type="radio" name="q10" value="C">C. Lentes y lentes de contacto de prescripcion.<br>
+
+	<!-- Include other quiz questions similarly -->
+
+        <br>
+        <label for="signature">Presiona ENTREGAR, luego IMPRIMIR. Agrega tu firma aqui una vez impreso el examen:</label>
+        <div class="signature-box"></div><br><br>
+
+        <input type="button" value="Entregar" onclick="calculateScore()">
+        <input type="button" value="Imprimir" onclick="printQuiz()">
+    </form>
+
+    <h2>Resultados:</h2>
+    <p id="resultado"></p>
+    <p id="Hora y fecha"></p>
+
+    <script>
+        function calculateScore() {
+            var username = document.getElementById("username").value;
+            var score = 0;
+            var answers = ['C', 'C', 'D', 'C', 'A', 'B', 'A', 'B', 'C', 'C']; // Correct answers
+
+            for (var i = 1; i <= 10; i++) {
+                var selectedAnswer = document.querySelector('input[name="q' + i + '"]:checked');
+                if (selectedAnswer && selectedAnswer.value === answers[i - 1]) {
+                    score++;
+                }
+            }
+
+            var resultElement = document.getElementById("result");
+            resultElement.textContent = "Hello, " + username + "! Your score: " + score + "/10";
+        }
+
+        function printQuiz() {
+            var timestamp = new Date().toLocaleString(); // Get current date and time
+            var timestampElement = document.getElementById("timestamp");
+            timestampElement.textContent = "Printed on: " + timestamp;
+
+            window.print();
+        }
+    </script>
+</body>
+
+</html>
