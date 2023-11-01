@@ -82,8 +82,8 @@
     </form>
 
     <h2>Resultados:</h2>
-    <p id="resultado"></p>
-    <p id="Hora y fecha"></p>
+    <p id="result"></p>
+    <p id="timestamp"></p>
 
     <script>
         function calculateScore() {
@@ -99,7 +99,7 @@
             }
 
             var resultElement = document.getElementById("result");
-            resultElement.textContent = "Hello, " + username + "! Your score: " + score + "/10";
+            resultElement.textContent = "Hola, " + username + "! Tu calificacion: " + score + "/10";
         }
 
         function printQuiz() {
